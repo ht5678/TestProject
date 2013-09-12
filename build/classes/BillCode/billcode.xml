@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Component>
+	<!-- Description BillCode生成测试生成规则定义文件，详细使用方式参考may框架相关文档 -->
+
+	<BillCode name="包装类型号生成规则" className="domain.PackageType">
+		<piece type="property" value="type" >
+			<func name="format" parameter="TP" />
+		</piece>
+		<piece type="date" value="yyMMdd" />
+		<piece type="sequence" value="1">
+			<func name="format" parameter="%04d" />
+		</piece>
+	</BillCode>
+	
+	
+</Component>
