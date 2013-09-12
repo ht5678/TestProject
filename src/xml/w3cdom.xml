@@ -1,0 +1,18 @@
+<?xml version="1.0"?>  
+<students>  
+    <student>  
+        <name>John</name>  
+        <grade>B</grade>  
+        <age>12</age>  
+    </student>  
+    <student>  
+        <name>Mary</name>  
+        <grade>A</grade>  
+        <age>11</age>  
+    </student>  
+    <student>  
+        <name>Simon</name>  
+        <grade>A</grade>  
+        <age>18</age>  
+    </student>  
+</students> 
