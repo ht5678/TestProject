@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+				targetNamespace="http://www.example.org/02" 
+				xmlns:tns="http://www.example.org/02" 
+				elementFormDefault="qualified">
+
+	<element name="books">
+		<complexType><!-- unbounded表示不限制 -->
+			<sequence minOccurs="0" maxOccurs="unbounded">
+				<element name="book" >
+					<complexType>
+						<sequence>
+							<element name="id" type="int"></element>
+							<element name="title" type="string"></element>
+							<element name="content" type="string"></element>
+							<choice>
+								<element name="author" type="string"></element>
+								<element name="authors">
+									<complexType>
+										<sequence minOccurs="1" maxOccurs="3">
+											<element name="author"></element>
+										</sequence>
+									</complexType>
+								</element>
+							</choice>
+						</sequence>
+						<!-- 属性attribute要在sequence之后 -->
+						<attribute name="isbn" type="string" use="required"></attribute>
+						<!--  <attribute name="isbn" type="string" use="optional"></attribute>-->
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	
+</schema>

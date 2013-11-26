@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:persons xmlns:test="http://www.example.org/simpleType"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/simpleType simpleType.xsd">
+	
+	<!-- 在window-perference-xml中添加xsd文件 
+		****注意顺序排列-->
+	<test:person>
+		<test:name>zhangsan</test:name>
+		<test:age>149</test:age>
+		<test:sex>男</test:sex>
+		<test:email>zhangsan@163.com</test:email>
+	</test:person>
+	
+	<test:person>
+		<test:name>zhangsan</test:name>
+		<test:age>1</test:age>
+		<test:sex>女</test:sex>
+		<test:email>zhan.3@163.com</test:email>
+	</test:person>
+	
+</test:persons>

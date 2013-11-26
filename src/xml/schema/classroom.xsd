@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+				targetNamespace="http://www.example.org/classroom" 
+				xmlns:tns="http://www.example.org/classroom" 
+				elementFormDefault="qualified">
+	<!-- 包含xsd文件,注意student.xsd文件的命名空间xmlns:tns也是等于http://www.example.org/classroom -->
+	 <xsd:include schemaLocation="student.xsd"/>
+	<!-- <xsd:import schemaLocation="student.xsd"/> -->
+	
+	<xsd:element name="classroom" type="tns:classroomType"/>
+	
+	<xsd:complexType name="classroomType">
+		<xsd:sequence>
+			<xsd:element name="no" type="xsd:string"/>
+			<xsd:element name="stus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="student" type="tns:studentType"/> 
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>		
+	</xsd:complexType>
+	
+</xsd:schema>

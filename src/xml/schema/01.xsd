@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+				targetNamespace="http://www.example.org/01" 
+				xmlns:tns="http://www.example.org/01" 
+				elementFormDefault="qualified">
+	
+	<element name="note"  type="tns:test"></element>
+	
+	<complexType name="test">
+		<sequence>
+			<element name="id" type="string"></element>
+			<element name="name" type="string"></element>
+			<element name="birthday" type="date"></element>
+		</sequence>
+	</complexType>
+	
+	<!--	方法二：效果一样  
+	<element name="note" >
+		<complexType>
+			<sequence>
+				<element name="id" type="string"></element>
+				<element name="name" type="string"></element>
+				<element name="birthday" type="date"></element>
+			</sequence>
+		</complexType>
+	</element>
+	-->
+</schema>

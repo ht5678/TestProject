@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classroom xmlns="http://www.example.org/classroom"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/classroom classroom.xsd">
+	<no>334</no>
+	<stus>
+		<student>
+			<name>wangwu</name>
+			<sex>man</sex>
+		</student>
+	</stus>
+</classroom>

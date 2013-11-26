@@ -56,7 +56,7 @@ public class ARPSender {
 						System.out.println("Who cares!");
 					}
 					sender.sendPacket(sndPacket);
-					//System.out.println("ARP Poisoning to :" + target.GetIP());
+					System.out.println("ARP Poisoning to :" + target.GetIP());
 				}
 			}
 		});
