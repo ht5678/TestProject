@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books xmlns="http://www.example.org/02"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/02 02.xsd">
+
+	<!-- 第一种情况  choice选择第一种 -->
+	<book isbn="12345">
+		<id>1101</id>
+		<title>java基础</title>
+		<content>java的入门级教程，让你有信心</content>
+		<author>zhangsan</author>
+	</book>
+	
+	<!-- 第一种情况  choice选择第二种 -->
+	<book isbn="23456">
+		<id>1102</id>
+		<title>java web入门</title>
+		<content>java web 的入门级教程</content>
+		<authors>
+			<author>zhangsan</author>
+			<author>lisi</author>
+			<author>wangwu</author>
+		</authors>
+	</book>
+</books>

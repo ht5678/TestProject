@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note	xmlns="http://www.example.org/01"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/01 01.xsd">
+	<!-- 在使用xsd文件进行校验的时候，注意要把xsd文件加到路径中  window-preference-xml -->
+	<id>1</id>
+	<name>zhansgan</name>
+	<birthday>2013-02-04</birthday>
+</note>

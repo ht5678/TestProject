@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+				targetNamespace="http://www.example.org/classroom" 
+				xmlns:tns="http://www.example.org/classroom" 
+				elementFormDefault="qualified">
+				
+	<xsd:element name="student" type="tns:studentType"/>
+	
+	<xsd:complexType name="studentType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="sex" type="tns:sexType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="sexType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="man"/>
+			<xsd:enumeration value="women"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+</xsd:schema>

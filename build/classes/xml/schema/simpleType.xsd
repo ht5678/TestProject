@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+				targetNamespace="http://www.example.org/simpleType" 
+				xmlns:tns="http://www.example.org/simpleType" 
+				elementFormDefault="qualified">
+	<element name="persons">
+		<complexType>
+			<sequence minOccurs="1" maxOccurs="2">
+				<element name="person" type="tns:personType"/>		
+			</sequence>
+		</complexType>
+	</element>
+	
+	
+	<complexType name="personType">
+		<sequence>
+			<element name="name" type="string"/>
+			<element name="age"  type="tns:ageType"/>
+			<element name="sex" type="tns:sexType"/>
+			<element name="email" type="tns:emailType"/>
+		</sequence>
+	</complexType>				
+	
+	<simpleType name="ageType">
+		<restriction base="int">
+			<minInclusive value="1"/>
+			<maxExclusive value="150"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="sexType">
+		<restriction base="string">
+			<enumeration value="男"/>
+			<enumeration value="女"/>
+		</restriction>
+	</simpleType>
+				
+	<simpleType name="emailType">
+		<restriction base="string">
+			<pattern value="(\w+\.*)*\w+@\w+\.[A-Za-z]{2,6}"/>
+			<minLength value="6"/>
+			<maxLength value="255"/>
+		</restriction>
+	</simpleType>			
+	
+</schema>
