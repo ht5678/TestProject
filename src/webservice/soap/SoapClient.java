@@ -1,7 +1,6 @@
 package webservice.soap;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.namespace.QName;
@@ -12,8 +11,11 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
+import javax.xml.ws.Dispatch;
+import javax.xml.ws.Service;
 
 import org.junit.Test;
+import org.w3c.dom.Document;
 
 /**
  * 使用编程方式用soap请求webservice
@@ -22,17 +24,52 @@ import org.junit.Test;
  */
 public class SoapClient {
 
+	private static String ns = "http://server.webservice/";
+	
+	/**
+	 * 练习对象的传输:soap
+	 */
+	@Test
+	public void testUserResponse(){
+		
+	}
+	
+	
 	/**
 	 * 根据请求的内容响应结果
 	 */
 	@Test
 	public void testResponse(){
-//		try {
-//			URL url = new URL("http://localhost:8989/ws?wsdl");
-//			QName sname = new QName(namespaceURI, "");
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
+		try {
+			//创建服务service
+			URL url = new URL("http://localhost:8989/ws?wsdl");
+			QName sname = new QName(ns, "MyServiceImplService");
+			Service service = Service.create(url, sname);
+			//创建dispatch
+			Dispatch<SOAPMessage> dispatch = service.createDispatch(new QName(ns,"MyServiceImplPort"), 
+					SOAPMessage.class, Service.Mode.MESSAGE);
+			//创建soapmessage
+			SOAPMessage msg = MessageFactory.newInstance().createMessage();
+			SOAPEnvelope envelope = msg.getSOAPPart().getEnvelope();
+			SOAPBody body = envelope.getBody();
+			//创建qname来指定消息中传递数据
+			QName ename  = new QName(ns, "add", "q0");//<q0:add xmlns="xx"/>
+			SOAPBodyElement ele = body.addBodyElement(ename);
+			ele.addChildElement("a").setValue("22");
+			ele.addChildElement("b").setValue("33");
+			msg.writeTo(System.out);
+			System.out.println("\n invoking...");
+			//通过dispatch来传递消息，然后返回响应
+			SOAPMessage response = dispatch.invoke(msg);
+			response.writeTo(System.out);
+			System.out.println();
+			//将响应的对象转换成dom对象
+			Document doc = response.getSOAPPart().getEnvelope().getBody().extractContentAsDocument();
+			String str = doc.getElementsByTagName("addResult").item(0).getTextContent();
+			System.out.println(str);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
