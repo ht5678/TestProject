@@ -1,6 +1,7 @@
 package webservice.soap;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.namespace.QName;
@@ -31,6 +32,16 @@ public class SoapClient {
 	 */
 	@Test
 	public void testUserResponse(){
+		try {
+			//创建服务
+			URL url = new URL("http://localhost:8989/ws?wsdl");
+			QName sname = new QName(ns,"MyServiceImplService");
+			Service service = Service.create(url, sname);
+			
+			
+		} catch (MalformedURLException e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
