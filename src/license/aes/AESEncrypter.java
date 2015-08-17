@@ -1,11 +1,14 @@
 package license.aes;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
-import java.util.Scanner;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -120,14 +123,55 @@ public class AESEncrypter {
 		return encrypted;
 	}
 
-	public static void main(String args[]) {
-		System.out.println("请输入明文：");
-		Scanner scanner = new Scanner(System.in);
-		String str1 = scanner.next();
-		String str = AESEncrypter.getInstance().encrypt(str1);
-		System.out.println("加密后的值为：");
-		System.out.println(str);
-		System.out.println("解密后的值为：");
-		System.out.println(AESEncrypter.getInstance().decrypt(str));
-	}
+	
+	/**
+	 * 输入方式加密解密
+	 * @param args
+	 */
+//	public static void main(String args[]) {
+//		System.out.println("请输入明文：");
+//		Scanner scanner = new Scanner(System.in);
+//		String str1 = scanner.next();
+//		String str = AESEncrypter.getInstance().encrypt(str1);
+//		System.out.println("加密后的值为：");
+//		System.out.println(str);
+//		System.out.println("解密后的值为：");
+//		System.out.println(AESEncrypter.getInstance().decrypt(str));
+//	}
+	
+	
+	
+	   /**
+	    * 文件读取方式加密解密
+	    * @param args
+	    */
+	   public static void main(String args[]){
+	       BufferedReader br = null;
+	       try{
+	        br = new BufferedReader(new FileReader(new File("d://tmp.txt")));
+	        StringBuilder sb = new StringBuilder();
+	        String line = "";
+	        while((line = br.readLine())!=null){
+	            sb.append(line);
+	            sb.append("\r\n");
+	        }
+	        
+	        String str = AESEncrypter.getInstance().encrypt(sb.toString());
+            System.out.println("加密后的值为：");
+            System.out.println(str);
+            System.out.println("解密后的值为：");
+//            System.out.println(AESEncrypter.getInstance().decrypt(str));
+	       }catch(Exception e){
+	           System.out.println(e.getMessage());
+	       }finally{
+	           if(br!=null){
+	               try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+	           }
+	       }
+	    }
+	
 }
